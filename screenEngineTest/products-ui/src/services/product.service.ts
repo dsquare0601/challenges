@@ -1,3 +1,4 @@
+import { Product } from './../models/product.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import env from 'src/config/environment';
@@ -10,7 +11,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getProducts() {
-    return this.http.get(`${this.baseURL}`);
+    return this.http.get<Product[]>(`${this.baseURL}`);
   }
 
   getSales() {
