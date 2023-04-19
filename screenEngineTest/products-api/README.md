@@ -58,6 +58,8 @@ npm run lint:fix
 
 - `npm run migrate`: Migrate database schemas for models
 - `npm run openapi-spec`: Generate OpenAPI spec into a file
+- `npm run docker:build`: Build a Docker image for this application
+- `npm run docker:run`: Run this application inside a Docker container
 
 ## Tests
 
