@@ -1,7 +1,9 @@
 <div class="chart-container">
   <canvas id="pieChart">{{ chart }}</canvas>
 </div>
-
+<div class="align-items-center justify-content-center d-flex pt-2">
+  <h4>Sales per month</h4>
+</div>
 <div *ngIf="!this.hasChartData">
   <h1>No Sales Data Found! Please add some products and do transactions.</h1>
 </div>
