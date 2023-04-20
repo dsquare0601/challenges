@@ -109,6 +109,25 @@ export class ProductsController {
     return products;
   }
 
+  @get('/products/dropdown')
+  @response(200, {
+    description: 'Array of Products model instances',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'array',
+          items: getModelSchemaRef(Products, {includeRelations: true}),
+        },
+      },
+    },
+  })
+  async findDropdown(): Promise<Products[]> {
+    // GET product name and id as dropdown response;
+    return this.productsRepository.find({
+      fields: ['id', 'name', 'cost'],
+    });
+  }
+
   @get('/products/sales')
   @response(200, {
     description: 'Array of Products model instances',

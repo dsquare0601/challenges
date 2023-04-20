@@ -30,7 +30,6 @@ export class Transactions extends Entity {
 
   @property({
     type: 'date',
-    required: true,
   })
   createdAt: string;
 

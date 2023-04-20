@@ -17,6 +17,7 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
+import moment from 'moment-timezone';
 import {Transactions} from '../models';
 import {TransactionsRepository} from '../repositories';
 import {ProductsRepository} from './../repositories/products.repository';
@@ -47,7 +48,10 @@ export class TransactionsController {
     })
     transactions: Omit<Transactions, 'id'>,
   ): Promise<Transactions> {
-    return this.transactionsRepository.create(transactions);
+    return this.transactionsRepository.create({
+      ...transactions,
+      createdAt: moment().format(),
+    });
   }
 
   @get('/transactions/count')
