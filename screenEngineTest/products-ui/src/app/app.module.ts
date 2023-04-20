@@ -19,23 +19,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    ProductComponent,
-    TransactionsComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgbModule,
     SharedModule,
     NgChartsModule.forRoot(),
     HttpClientModule,
-    FormsModule,
-    NgbTypeaheadModule,
-    NgbPaginationModule,
   ],
   providers: [ProductService],
   bootstrap: [AppComponent],

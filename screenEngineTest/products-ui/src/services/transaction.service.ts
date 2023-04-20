@@ -14,4 +14,8 @@ export class TransactionService {
   getTransactions() {
     return this.http.get<Transaction[]>(`${this.baseURL}`);
   }
+
+  addTransactions(data: any) {
+    return this.http.post(`${this.baseURL}/`, data);
+  }
 }

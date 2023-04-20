@@ -1,6 +1,8 @@
 import { Transaction } from './../../models/transaction.model';
 import { Component } from '@angular/core';
 import { TransactionService } from 'src/services/transaction.service';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { CreateTransactionsComponent } from './create-transactions/create-transactions.component';
 
 @Component({
   selector: 'app-transactions',
@@ -13,13 +15,24 @@ export class TransactionsComponent {
   allTransactions: Transaction[] = [];
   transactions: Transaction[] = [];
   collectionSize = this.allTransactions.length;
+  private modalRef!: NgbModalRef;
 
-  constructor(private transactionService: TransactionService) {
+  constructor(
+    private transactionService: TransactionService,
+    private modalService: NgbModal
+  ) {
     this.refreshTransaction();
   }
 
   ngOnInit() {
     this.getProductsList();
+  }
+
+  openTransactions() {
+    this.modalRef = this.modalService.open(CreateTransactionsComponent);
+    this.modalRef.result.then((result) => {
+      this.getProductsList();
+    });
   }
 
   getProductsList() {

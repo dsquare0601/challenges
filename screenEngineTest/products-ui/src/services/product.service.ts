@@ -17,4 +17,12 @@ export class ProductService {
   getSales() {
     return this.http.get(`${this.baseURL}/sales`);
   }
+
+  createProducts(data: any) {
+    return this.http.post(`${this.baseURL}/`, data);
+  }
+
+  getProductsDropdown() {
+    return this.http.get(`${this.baseURL}/dropdown`);
+  }
 }

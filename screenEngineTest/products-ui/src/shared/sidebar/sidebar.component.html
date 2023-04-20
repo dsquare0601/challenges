@@ -1,1 +1,7 @@
-<p>sidebar works!</p>
+<div class="d-flex">
+  <div ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills">
+    <ng-container [ngbNavItem]="link.fragment" *ngFor="let link of links">
+      <button ngbNavLink [routerLink]="link.fragment">{{ link.title }}</button>
+    </ng-container>
+  </div>
+</div>

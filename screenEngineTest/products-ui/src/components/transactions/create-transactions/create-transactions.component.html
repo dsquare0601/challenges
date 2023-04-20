@@ -1,0 +1,67 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Transaction</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="transactionsForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="product">Product<span class="text-danger">*</span></label>
+        <select
+          name="project"
+          style="width: 100%"
+          class="dropdown"
+          (change)="onChangeProduct($event)"
+          id="productId"
+        >
+          <option *ngFor="let data of products" [value]="data.id">
+            {{ data.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="note">note<span class="text-danger">*</span></label>
+        <textarea
+          id="note"
+          placeholder="note"
+          class="form-control"
+          formControlName="note"
+          aria-label="note"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="qty">qty<span class="text-danger">*</span></label>
+        <input
+          id="qty"
+          placeholder="qty"
+          type="number"
+          formControlName="qty"
+          class="form-control"
+          aria-label="qty"
+        />
+      </div>
+      <div class="form-group">
+        <label for="sellingCost">sellingCost</label>
+        <input
+          id="sellingCost"
+          placeholder="sellingCost"
+          [disabled]="true"
+          formControlName="sellingCost"
+          class="form-control"
+          aria-label="Product sellingCost"
+        />
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">
+      Save
+    </button>
+  </div>
+</div>

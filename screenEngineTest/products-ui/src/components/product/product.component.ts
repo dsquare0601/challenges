@@ -1,6 +1,8 @@
 import { Product } from './../../models/product.model';
 import { ProductService } from './../../services/product.service';
 import { Component } from '@angular/core';
+import { CreateProductsComponent } from './create-products/create-products.component';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product',
@@ -13,13 +15,23 @@ export class ProductComponent {
   allProducts: Product[] = [];
   products: Product[] = [];
   collectionSize = this.allProducts.length;
-
-  constructor(private productService: ProductService) {
+  private modalRef!: NgbModalRef;
+  constructor(
+    private productService: ProductService,
+    private modalService: NgbModal
+  ) {
     this.refreshProducts();
   }
 
   ngOnInit() {
     this.getProductsList();
+  }
+
+  openProducts() {
+    this.modalRef = this.modalService.open(CreateProductsComponent);
+    this.modalRef.result.then((result) => {
+      this.getProductsList();
+    });
   }
 
   getProductsList() {
