@@ -1,0 +1,25 @@
+<!-- <app-sidebar> </app-sidebar>
+<router-outlet></router-outlet> -->
+
+<div id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <app-navbar></app-navbar>
+        <div class="container-fluid" id="container-wrapper">
+          <div class="pushup">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll to top -->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+  </div>
+</div>

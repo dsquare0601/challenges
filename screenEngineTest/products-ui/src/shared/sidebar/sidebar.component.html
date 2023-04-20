@@ -1,0 +1,39 @@
+<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+  <a
+    class="sidebar-brand align-items-center justify-content-center"
+    [routerLink]="['']"
+  >
+    <div class="">Inventory</div>
+  </a>
+  <hr class="sidebar-divider my-0" />
+  <li class="nav-item active">
+    <a
+      class="nav-link"
+      [routerLink]="['/']"
+      routerLinkActive="router-link-active"
+    >
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Dashboard</span></a
+    >
+  </li>
+  <li class="nav-item active">
+    <a
+      class="nav-link"
+      [routerLink]="['/products']"
+      routerLinkActive="router-link-active"
+    >
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Products</span></a
+    >
+  </li>
+  <li class="nav-item active">
+    <a
+      class="nav-link"
+      [routerLink]="['/transactions']"
+      routerLinkActive="router-link-active"
+    >
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Transactions</span></a
+    >
+  </li>
+</ul>

@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="margin-left: auto; padding-bottom: 2rem">
+      <button class="btn btn-primary float-right" (click)="openTransactions()">
+        Add Transaction
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Product</th>
+          <th scope="col">Selling Cost</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Note</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trans of transactions">
+          <th scope="row">{{ trans.id }}</th>
+          <td>{{ trans.qty * trans.sellingCost | number }}</td>
+          <td>{{ trans.product }}</td>
+          <td>{{ trans.sellingCost | number }}</td>
+          <td>{{ trans.qty | number }}</td>
+          <td>{{ trans.note }}</td>
+          <td>{{ trans.createdAt | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshTransaction()"
+      >
+      </ngb-pagination>
+
+      <select
+        class="form-select"
+        style="width: auto"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="refreshTransaction()"
+      >
+        <option [ngValue]="2">2 items per page</option>
+        <option [ngValue]="4">4 items per page</option>
+        <option [ngValue]="6">6 items per page</option>
+        <option [ngValue]="10">10 items per page</option>
+        <option [ngValue]="20">20 items per page</option>
+        <option [ngValue]="50">50 items per page</option>
+      </select>
+    </div>
+  </div>
+</div>

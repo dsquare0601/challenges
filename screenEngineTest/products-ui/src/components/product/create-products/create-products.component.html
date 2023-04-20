@@ -1,0 +1,106 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add New Product</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label class="col-3" for="name"
+          >Name<span class="text-danger">*</span></label
+        >
+        <input
+          type="text"
+          required
+          class="form-control col-3"
+          id="name"
+          aria-describedby="Name"
+          placeholder="Name"
+          formControlName="name"
+        />
+      </div>
+      <div class="form-group row">
+        <label class="col-3" for="description">Description</label>
+        <textarea
+          class="form-control col-3"
+          placeholder="Description"
+          formControlName="description"
+          aria-label="Description"
+          id="description"
+        ></textarea>
+      </div>
+      <div class="form-group row">
+        <label class="col-3" for="cost"
+          >Cost<span class="text-danger">*</span></label
+        >
+        <input
+          type="number"
+          required
+          id="cost"
+          placeholder="Cost"
+          formControlName="cost"
+          class="form-control col-3"
+          aria-label="cost"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="mfgDate">Date of MFG</label>
+        <div class="input-group">
+          <input
+            id="mfgDate"
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp1"
+            [(ngModel)]="mfgModel"
+            [ngModelOptions]="{ standalone: true }"
+            ngbDatepicker
+            #dp1="ngbDatepicker"
+          />
+          <button
+            class="btn btn-outline-secondary bi bi-calendar3"
+            (click)="dp1.toggle()"
+            type="button"
+          ></button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="expiryDate">Date of Expiry</label>
+        <div class="input-group">
+          <input
+            id="expiryDate"
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            [(ngModel)]="expModel"
+            [ngModelOptions]="{ standalone: true }"
+            name="dp2"
+            ngbDatepicker
+            #dp2="ngbDatepicker"
+          />
+          <button
+            class="btn btn-outline-secondary bi bi-calendar3"
+            (click)="dp2.toggle()"
+            type="button"
+          ></button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      [disabled]="!productForm.valid"
+      class="btn btn-outline-dark"
+      (click)="onSubmit()"
+    >
+      Save
+    </button>
+  </div>
+</div>
